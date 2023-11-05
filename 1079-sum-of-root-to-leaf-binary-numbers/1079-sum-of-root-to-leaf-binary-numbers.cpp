@@ -11,25 +11,15 @@
  */
 class Solution {
     void traverse(TreeNode* root,int &sum,int &mastersum){
-        if(root==NULL)return;
-        
         sum=2*sum+root->val;
-        cout<<sum<<endl;
-        if(root->left==NULL && root->right==NULL){
-            mastersum+=sum;
-        cout<<"//"<<mastersum<<endl;
-        }
+        if(root->left==NULL && root->right==NULL) mastersum+=sum;
         if(root->left!=NULL)traverse(root->left,sum,mastersum);
-        cout<<sum<<endl;
         if(root->right!=NULL)traverse(root->right,sum,mastersum);
         sum=(sum-root->val)/2;
-        cout<<sum<<endl;
-        
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        int sum=0;
-        int mastersum=0;
+        int sum=0,mastersum=0;
         traverse(root,sum,mastersum);
         return mastersum;
     }
