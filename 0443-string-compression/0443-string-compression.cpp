@@ -8,7 +8,8 @@ public:
 
                else if(chars[i]==chars[i-1]) count++;
 
-               else{int k=0;
+            if((i>=1)&&(chars[i]!=chars[i-1] || i==chars.size()-1)){
+                   int k=0;
                if(count>1)  k=count;
                     string s;
                    while(k){
@@ -22,23 +23,10 @@ public:
                         ans.push_back(it);
                    }
                    count=1;
-                   ans.push_back(chars[i]);
+                  if(chars[i]!=chars[i-1]) ans.push_back(chars[i]);
                }
         }
-        int k=0;
-               if(count>1)  k=count;
-                    string s;
-                   while(k){
-                       count++;
-                       int d = k%10;
-                       s+='0'+d;
-                       k=k/10;
-                   }
-                   reverse(s.begin(),s.end());
-                   for(auto it :s){
-                        ans.push_back(it);
-                   }
-       
+        
         chars=ans;
         return chars.size();
 
